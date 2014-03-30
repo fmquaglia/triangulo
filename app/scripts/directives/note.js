@@ -13,7 +13,7 @@ angular.module('trianguloApp')
         scope.key = angular.isDefined(scope.key) ? jQuery.trim(scope.key.toString()).toUpperCase() : 'A';
         var fullNote;
         if (scope.key.search(/^[A-G]\#?b?$/i) < 0) {
-          scope.key = 'A'
+          scope.key = 'A';
         }
         parseKey();
 
@@ -25,8 +25,8 @@ angular.module('trianguloApp')
           } else {
             fullNote = teoria.note.fromString(scope.key);
           }
-          scope.name = fullNote.name();
-          scope.accidental = fullNote.accidental();
+          scope.name = fullNote.name().toUpperCase();
+          scope.accidental = fullNote.accidental().toLowerCase();
         }
       }
     };

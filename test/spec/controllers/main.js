@@ -16,5 +16,12 @@ describe('Controller: MainCtrl', function () {
     });
   }));
 
+  it('should attach a list of tones to the scope', function () {
+    expect(angular.isArray(scope.tones)).toBe(true);
+    expect(scope.tones.length).toBe(17);
+  });
 
+  it('should init selectedTone as C', function(){
+    expect(scope.selectedTone).toBe('C');
+  });
 });
