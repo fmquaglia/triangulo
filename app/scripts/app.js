@@ -1,10 +1,12 @@
 'use strict';
 
-angular.module('trianguloApp', [
-  'ngResource',
-  'ngRoute',
-  'ui.bootstrap'
-])
+angular
+  .module('trianguloApp', [
+    'ngCookies',
+    'ngResource',
+    'ngSanitize',
+    'ngRoute'
+  ])
   .config(function ($routeProvider) {
     $routeProvider
       .when('/', {
