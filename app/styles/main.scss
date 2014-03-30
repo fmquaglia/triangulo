@@ -1,7 +1,11 @@
-@import 'compass/reset';
-$icon-font-path: "/bower_components/sass-bootstrap/fonts/";
+@import "compass/reset";
+$icon-font-path: "/bower_components/bootstrap-sass-official/vendor/assets/fonts/bootstrap/";
 
-@import 'sass-bootstrap/lib/bootstrap';
+@import 'bootstrap-sass-official/vendor/assets/stylesheets/bootstrap';
+
+body {
+  background: #144860;
+}
 
 .note {
   .name {
@@ -26,6 +30,7 @@ $icon-font-path: "/bower_components/sass-bootstrap/fonts/";
   }
   .quality {
     @include make-sm-column(1);
+    color: #FEF9E6;
     line-height: 2;
   }
 }
@@ -50,6 +55,6 @@ $icon-font-path: "/bower_components/sass-bootstrap/fonts/";
     text-align: center;
     font-size: 3rem;
     line-height: 6;
-    color: #7c983d;
+    color: #144860;
   }
 }
