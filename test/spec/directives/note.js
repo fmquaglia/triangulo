@@ -158,7 +158,7 @@ describe('Directive: note', function () {
       compileWithToneAndTranspose('C', 'm7');
       expect(element.text()).toBe('Bb');
     });
-    it('if present and not properly formated should raise an error', function(){
+    it('if present and not properly formatted should raise an error', function(){
       expect(function() {
         compileWithToneAndTranspose('E', 'XXX');
       }).toThrow();
