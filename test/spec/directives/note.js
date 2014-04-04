@@ -20,6 +20,12 @@ describe('Directive: note', function () {
     element = $compile(element)(scope);
     scope.$digest();
   }
+  function compileWithToneAndTranspose(tone, transpose) {
+    scope.selectedTone = tone;
+    element = angular.element('<note key="selectedTone" transpose="' + transpose + '"></note>');
+    element = $compile(element)(scope);
+    scope.$digest();
+  }
 
   describe('proper initialization', function(){
     it('should render the A note', function () {
@@ -116,6 +122,46 @@ describe('Directive: note', function () {
       compileWithTone('10000000');
       expect(element.text()).toBe('A');
     });
-
+  });
+  describe('transpose attribute', function(){
+    it('if not present should render the key note', function(){
+      compileWithToneAndTranspose('A', '');
+      expect(element.text()).toBe('A');
+    });
+    it('if present and valid should render the note transposed properly', function(){
+      compileWithToneAndTranspose('C', 'M2');
+      expect(element.text()).toBe('D');
+      compileWithToneAndTranspose('C', 'm2');
+      expect(element.text()).toBe('Db');
+      compileWithToneAndTranspose('C', 'M3');
+      expect(element.text()).toBe('E');
+      compileWithToneAndTranspose('C', 'm3');
+      expect(element.text()).toBe('Eb');
+      compileWithToneAndTranspose('C', 'P4');
+      expect(element.text()).toBe('F');
+      compileWithToneAndTranspose('C', 'd4');
+      expect(element.text()).toBe('Fb');
+      compileWithToneAndTranspose('C', 'A4');
+      expect(element.text()).toBe('F#');
+      compileWithToneAndTranspose('C', 'P5');
+      expect(element.text()).toBe('G');
+      compileWithToneAndTranspose('C', 'd5');
+      expect(element.text()).toBe('Gb');
+      compileWithToneAndTranspose('C', 'A5');
+      expect(element.text()).toBe('G#');
+      compileWithToneAndTranspose('C', 'M6');
+      expect(element.text()).toBe('A');
+      compileWithToneAndTranspose('C', 'm6');
+      expect(element.text()).toBe('Ab');
+      compileWithToneAndTranspose('C', 'M7');
+      expect(element.text()).toBe('B');
+      compileWithToneAndTranspose('C', 'm7');
+      expect(element.text()).toBe('Bb');
+    });
+    it('if present and not properly formated should raise an error', function(){
+      expect(function() {
+        compileWithToneAndTranspose('E', 'XXX');
+      }).toThrow();
+    });
   });
 });

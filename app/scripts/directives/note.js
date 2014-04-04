@@ -20,7 +20,7 @@ angular.module('trianguloApp')
         scope.$watch('key', parseKey);
 
         function parseKey() {
-          if (angular.isString(attrs.transpose)) {
+          if (angular.isString(attrs.transpose) && attrs.transpose) {
             fullNote = teoria.note.fromString(scope.key).transpose(attrs.transpose);
           } else {
             fullNote = teoria.note.fromString(scope.key);
