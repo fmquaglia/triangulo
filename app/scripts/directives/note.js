@@ -6,7 +6,7 @@ angular.module('trianguloApp')
       scope: {
         key: '='
       },
-      template: '<span class="note">' +
+      template: '<span class="note" ng-click="play()">' +
                   '<span class="note_text">' +
                     '<span class="name">{{name}}</span>' +
                     '<sup class="accidental">{{accidental}}</sup>' +
@@ -38,6 +38,15 @@ angular.module('trianguloApp')
           scope.enharmonics = _.map(fullNote.enharmonics(), function(enharmonic) {
             return enharmonic.name().toUpperCase() + enharmonic.accidental().toLowerCase();
           });
+        }
+
+        scope.play = function() {
+          var midiNumber = fullNote.key() + 32;
+          var delay = 0; // play one note every quarter second
+          var velocity = 127; // how hard the note hits
+          MIDI.setVolume(0, 127);
+          MIDI.noteOn(0, midiNumber, velocity, delay);
+          MIDI.noteOff(0, midiNumber, delay + 0.75);
         }
       }
     };

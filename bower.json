@@ -12,7 +12,8 @@
     "angular-sanitize": "1.2.15",
     "angular-route": "1.2.15",
     "teoria": "~0.5.1",
-    "lodash": "~2.4.1"
+    "lodash": "~2.4.1",
+    "midi": "*"
   },
   "devDependencies": {
     "angular-mocks": "1.2.15",
