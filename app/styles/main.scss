@@ -72,6 +72,21 @@ h1, h2, h3 {
     font-size: 3.6rem;
     line-height: 6;
     color: #144860;
+    position: relative;
+    .enharmonics {
+      position: absolute;
+      display: table-cell;
+      color: #FF8935;
+      font-style: oblique;
+      font-size: 1.6rem;
+      list-style: none;
+      bottom: -1rem;
+      right: 1rem;
+    }
+    .enharmonic {
+      float: left;
+      margin-right: 1rem;
+    }
   }
 }
 

@@ -164,4 +164,9 @@ describe('Directive: note', function () {
       }).toThrow();
     });
   });
+  describe('note enharmonics', function(){
+    it('should be attached to the note scope as an array', function(){
+      element.scope()
+    });
+  });
 });
