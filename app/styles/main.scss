@@ -55,7 +55,7 @@ h1, h2, h3 {
   }
 }
 #triads {
-  @include gradient-vertical(#fef9e6, #eaffb9);
+  @include gradient-vertical(#fef9e6, #b0df7d);
   border: 2px solid #99c369;
   border-radius: 1rem;
   .triad:last-child .tone {
@@ -69,6 +69,9 @@ h1, h2, h3 {
   &:last-child {
     border-right: none;
   }
+  &:hover {
+    background: radial-gradient(#fef9e6, #b0df7d) ;
+  }
   .note {
     @include make-sm-column(12);
     height: 20rem;
@@ -77,6 +80,7 @@ h1, h2, h3 {
     line-height: 6;
     color: #144860;
     position: relative;
+    cursor: pointer;
     .enharmonics {
       position: absolute;
       display: table-cell;

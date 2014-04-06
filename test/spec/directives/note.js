@@ -173,4 +173,17 @@ describe('Directive: note', function () {
       expect(jQuery(element).find('.enharmonic').text()).toEqual('DbbB#')
     });
   });
+  // TODO: find out how to test
+  xdescribe('play note', function(){
+    it('when clicked should play note through MIDI', function(){
+      var spyMIDIVolume = spyOn(MIDI, 'setVolume');
+      var spyMIDIDelay = spyOn(MIDI, 'delay');
+      var spyMIDIVelocity = spyOn(MIDI, 'velocity');
+      compileWithTone('C');
+      element.click();
+      expect(spyMIDIVolume).toHaveBeenCalled();
+      expect(spyMIDIDelay).toHaveBeenCalled();
+      expect(spyMIDIVelocity).toHaveBeenCalled();
+    });
+  });
 });
