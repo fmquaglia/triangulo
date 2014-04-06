@@ -6,7 +6,15 @@ angular.module('trianguloApp')
       scope: {
         key: '='
       },
-      template: '<span class="note"><span class="name">{{name}}</span><sup class="accidental">{{accidental}}</sup></span>',
+      template: '<span class="note">' +
+                  '<span class="note_text">' +
+                    '<span class="name">{{name}}</span>' +
+                    '<sup class="accidental">{{accidental}}</sup>' +
+                    '</span>' +
+                  '<ul class="enharmonics">' +
+                    '<li class="enharmonic" ng-repeat="enharmonic in enharmonics">{{enharmonic}}</li>' +
+                  '</ul>' +
+                '</span>',
       restrict: 'E',
       replace: true,
       link: function postLink(scope, element, attrs) {
@@ -27,6 +35,9 @@ angular.module('trianguloApp')
           }
           scope.name = fullNote.name().toUpperCase();
           scope.accidental = fullNote.accidental().toLowerCase();
+          scope.enharmonics = _.map(fullNote.enharmonics(), function(enharmonic) {
+            return enharmonic.name().toUpperCase() + enharmonic.accidental().toLowerCase();
+          });
         }
       }
     };
