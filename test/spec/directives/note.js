@@ -26,137 +26,140 @@ describe('Directive: note', function () {
     element = $compile(element)(scope);
     scope.$digest();
   }
+  function getNoteText(el) {
+    return jQuery(el).find('.note_text').text();
+  }
 
   describe('proper initialization', function(){
     it('should render the A note', function () {
       var expectedNote = 'A';
       compileWithTone(expectedNote);
-      expect(element.text()).toBe(expectedNote);
+      expect(getNoteText(element)).toBe(expectedNote);
     });
     it('should render the A# note', function () {
       var expectedNote = 'A#';
       compileWithTone(expectedNote);
-      expect(element.text()).toBe(expectedNote);
+      expect(getNoteText(element)).toBe(expectedNote);
     });
     it('should render the Bb note', function () {
       var expectedNote = 'Bb';
       compileWithTone(expectedNote);
-      expect(element.text()).toBe(expectedNote);
+      expect(getNoteText(element)).toBe(expectedNote);
     });
     it('should render the B note', function () {
       var expectedNote = 'B';
       compileWithTone(expectedNote);
-      expect(element.text()).toBe(expectedNote);
+      expect(getNoteText(element)).toBe(expectedNote);
     });
     it('should render the C note', function () {
       var expectedNote = 'C';
       compileWithTone(expectedNote);
-      expect(element.text()).toBe(expectedNote);
+      expect(getNoteText(element)).toBe(expectedNote);
     });
     it('should render the C# note', function () {
       var expectedNote = 'C#';
       compileWithTone(expectedNote);
-      expect(element.text()).toBe(expectedNote);
+      expect(getNoteText(element)).toBe(expectedNote);
     });
     it('should render the Db note', function () {
       var expectedNote = 'Db';
       compileWithTone(expectedNote);
-      expect(element.text()).toBe(expectedNote);
+      expect(getNoteText(element)).toBe(expectedNote);
     });
     it('should render the D note', function () {
       var expectedNote = 'D';
       compileWithTone(expectedNote);
-      expect(element.text()).toBe(expectedNote);
+      expect(getNoteText(element)).toBe(expectedNote);
     });
     it('should render the D# note', function () {
       var expectedNote = 'D#';
       compileWithTone(expectedNote);
-      expect(element.text()).toBe(expectedNote);
+      expect(getNoteText(element)).toBe(expectedNote);
     });
     it('should render the E note', function () {
       var expectedNote = 'E';
       compileWithTone(expectedNote);
-      expect(element.text()).toBe(expectedNote);
+      expect(getNoteText(element)).toBe(expectedNote);
     });
     it('should render the F note', function () {
       var expectedNote = 'F';
       compileWithTone(expectedNote);
-      expect(element.text()).toBe(expectedNote);
+      expect(getNoteText(element)).toBe(expectedNote);
     });
     it('should render the F# note', function () {
       var expectedNote = 'F#';
       compileWithTone(expectedNote);
-      expect(element.text()).toBe(expectedNote);
+      expect(getNoteText(element)).toBe(expectedNote);
     });
     it('should render the Gb note', function () {
       var expectedNote = 'Gb';
       compileWithTone(expectedNote);
-      expect(element.text()).toBe(expectedNote);
+      expect(getNoteText(element)).toBe(expectedNote);
     });
     it('should render the G note', function () {
       var expectedNote = 'G';
       compileWithTone(expectedNote);
-      expect(element.text()).toBe(expectedNote);
+      expect(getNoteText(element)).toBe(expectedNote);
     });
     it('should render the G# note', function () {
       var expectedNote = 'G#';
       compileWithTone(expectedNote);
-      expect(element.text()).toBe(expectedNote);
+      expect(getNoteText(element)).toBe(expectedNote);
     });
     it('should render the Ab note', function () {
       var expectedNote = 'Ab';
       compileWithTone(expectedNote);
-      expect(element.text()).toBe(expectedNote);
+      expect(getNoteText(element)).toBe(expectedNote);
     });
   });
   describe('unperoper initialization', function(){
     it('should render A', function(){
       compileWithTone();
-      expect(element.text()).toBe('A');
+      expect(getNoteText(element)).toBe('A');
     });
     it('should render A', function(){
       compileWithTone('very long text');
-      expect(element.text()).toBe('A');
+      expect(getNoteText(element)).toBe('A');
     });
     it('should render A', function(){
       compileWithTone('10000000');
-      expect(element.text()).toBe('A');
+      expect(getNoteText(element)).toBe('A');
     });
   });
   describe('transpose attribute', function(){
     it('if not present should render the key note', function(){
       compileWithToneAndTranspose('A', '');
-      expect(element.text()).toBe('A');
+      expect(getNoteText(element)).toBe('A');
     });
     it('if present and valid should render the note transposed properly', function(){
       compileWithToneAndTranspose('C', 'M2');
-      expect(element.text()).toBe('D');
+      expect(getNoteText(element)).toBe('D');
       compileWithToneAndTranspose('C', 'm2');
-      expect(element.text()).toBe('Db');
+      expect(getNoteText(element)).toBe('Db');
       compileWithToneAndTranspose('C', 'M3');
-      expect(element.text()).toBe('E');
+      expect(getNoteText(element)).toBe('E');
       compileWithToneAndTranspose('C', 'm3');
-      expect(element.text()).toBe('Eb');
+      expect(getNoteText(element)).toBe('Eb');
       compileWithToneAndTranspose('C', 'P4');
-      expect(element.text()).toBe('F');
+      expect(getNoteText(element)).toBe('F');
       compileWithToneAndTranspose('C', 'd4');
-      expect(element.text()).toBe('Fb');
+      expect(getNoteText(element)).toBe('Fb');
       compileWithToneAndTranspose('C', 'A4');
-      expect(element.text()).toBe('F#');
+      expect(getNoteText(element)).toBe('F#');
       compileWithToneAndTranspose('C', 'P5');
-      expect(element.text()).toBe('G');
+      expect(getNoteText(element)).toBe('G');
       compileWithToneAndTranspose('C', 'd5');
-      expect(element.text()).toBe('Gb');
+      expect(getNoteText(element)).toBe('Gb');
       compileWithToneAndTranspose('C', 'A5');
-      expect(element.text()).toBe('G#');
+      expect(getNoteText(element)).toBe('G#');
       compileWithToneAndTranspose('C', 'M6');
-      expect(element.text()).toBe('A');
+      expect(getNoteText(element)).toBe('A');
       compileWithToneAndTranspose('C', 'm6');
-      expect(element.text()).toBe('Ab');
+      expect(getNoteText(element)).toBe('Ab');
       compileWithToneAndTranspose('C', 'M7');
-      expect(element.text()).toBe('B');
+      expect(getNoteText(element)).toBe('B');
       compileWithToneAndTranspose('C', 'm7');
-      expect(element.text()).toBe('Bb');
+      expect(getNoteText(element)).toBe('Bb');
     });
     it('if present and not properly formatted should raise an error', function(){
       expect(function() {
@@ -165,8 +168,9 @@ describe('Directive: note', function () {
     });
   });
   describe('note enharmonics', function(){
-    it('should be attached to the note scope as an array', function(){
-      element.scope()
+    it('should print them', function(){
+      compileWithTone('C');
+      expect(jQuery(element).find('.enharmonic').text()).toEqual('DbbB#')
     });
   });
 });

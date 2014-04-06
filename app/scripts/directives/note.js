@@ -7,8 +7,10 @@ angular.module('trianguloApp')
         key: '='
       },
       template: '<span class="note">' +
-                  '<span class="name">{{name}}</span>' +
-                  '<sup class="accidental">{{accidental}}</sup>' +
+                  '<span class="note_text">' +
+                    '<span class="name">{{name}}</span>' +
+                    '<sup class="accidental">{{accidental}}</sup>' +
+                    '</span>' +
                   '<ul class="enharmonics">' +
                     '<li class="enharmonic" ng-repeat="enharmonic in enharmonics">{{enharmonic}}</li>' +
                   '</ul>' +
