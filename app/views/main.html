@@ -7,9 +7,14 @@
   <span class="quality">
     Major
   </span>
+  <span class="checkbox hide_enharmonics">
+    <label for="hide_enharmonics">
+      <input id="hide_enharmonics" type="checkbox" ng-model="hideEnharmonics"/> Hide Enharmonics
+    </label>
+  </span>
 </div>
 
-<div id="triads">
+<div id="triads" ng-class="{'enharmonics_hidden': hideEnharmonics}">
   <ul class="triad">
     <li class="tone">
       <note key="selectedTone"></note>

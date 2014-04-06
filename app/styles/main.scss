@@ -49,6 +49,10 @@ h1, h2, h3 {
     color: #FEF9E6;
     line-height: 2;
   }
+  .hide_enharmonics {
+    float: right;
+    color: #FEF9E6;
+  }
 }
 #triads {
   @include gradient-vertical(#fef9e6, #eaffb9);
@@ -88,6 +92,10 @@ h1, h2, h3 {
       margin-right: 1rem;
     }
   }
+}
+
+.enharmonics_hidden .enharmonics {
+  visibility: hidden;
 }
 
 #intro {
