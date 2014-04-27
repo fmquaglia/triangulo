@@ -120,7 +120,13 @@ h1, h2, h3 {
       @include make-xs-column(6);
     }
     .hide_enharmonics {
-      float: left;
+      float: right;
+      input, label {
+        float: right;
+      }
+      input {
+        margin-left: 1rem;
+      }
     }
   }
   .tone {
@@ -131,9 +137,12 @@ h1, h2, h3 {
       font-size: 2.4rem;
       line-height: 4;
       .enharmonics {
-        font-size: 1.05rem;
+        font-size: 1.2rem;
         bottom: -1rem;
         right: 1rem;
+        .enharmonic {
+          margin-right: 0.5rem;
+        }
       }
     }
   }
