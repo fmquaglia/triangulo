@@ -1,7 +1,7 @@
 'use strict';
 
 angular.module('trianguloApp')
-  .controller('MainCtrl', function ($scope) {
+  .controller('TriadsCtrl', function ($scope) {
 
     $scope.tones = [
       'C',

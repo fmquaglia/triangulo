@@ -9,11 +9,11 @@ angular
   ])
   .config(function ($routeProvider) {
     $routeProvider
-      .when('/', {
-        templateUrl: 'views/main.html',
-        controller: 'MainCtrl'
+      .when('/triads', {
+        templateUrl: 'views/triads.html',
+        controller: 'TriadsCtrl'
       })
       .otherwise({
-        redirectTo: '/'
+        redirectTo: '/triads'
       });
   });
