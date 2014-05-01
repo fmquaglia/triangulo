@@ -176,6 +176,17 @@ describe('Directive: note', function () {
   });
   // TODO: find out how to test
   xdescribe('play note', function(){
+    beforeEach(function() {
+      MIDI.setVolume = function(volume) {
+        return volume;
+      };
+      MIDI.delay = function(delay) {
+        return delay;
+      };
+      MIDI.velocity = function(velocity) {
+        return velocity;
+      };
+    });
     it('when clicked should play note through MIDI', function(){
       var spyMIDIVolume = spyOn(MIDI, 'setVolume');
       var spyMIDIDelay = spyOn(MIDI, 'delay');
