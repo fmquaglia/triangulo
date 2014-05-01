@@ -22,7 +22,8 @@ describe('Directive: note', function () {
   }
   function compileWithToneAndTranspose(tone, transpose) {
     scope.selectedTone = tone;
-    element = angular.element('<note key="selectedTone" transpose="' + transpose + '"></note>');
+    scope.transposeKey = transpose;
+    element = angular.element('<note key="selectedTone" transpose="transposeKey"></note>');
     element = $compile(element)(scope);
     scope.$digest();
   }
