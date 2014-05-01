@@ -206,7 +206,7 @@ describe('Directive: note', function () {
       compileWithToneAndTranspose('C', 'M3')
     });
     it('should listen for quality changes and re parse keys', function(){
-      scope.transposeKey = ':3';
+      scope.transposeKey = 'm3';
       $rootScope.$broadcast('qualityChanged');
       scope.$apply();
       expect(getNoteText(element)).toBe('Eb');
