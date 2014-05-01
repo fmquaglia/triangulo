@@ -7,9 +7,11 @@ describe('Directive: note', function () {
 
   var element,
       $compile,
+      $rootScope,
       scope;
 
-  beforeEach(inject(function ($rootScope, _$compile_) {
+  beforeEach(inject(function (_$compile_, _$rootScope_) {
+    $rootScope = _$rootScope_;
     $compile = _$compile_;
     scope = $rootScope.$new();
   }));
@@ -196,6 +198,18 @@ describe('Directive: note', function () {
       expect(spyMIDIVolume).toHaveBeenCalled();
       expect(spyMIDIDelay).toHaveBeenCalled();
       expect(spyMIDIVelocity).toHaveBeenCalled();
+    });
+  });
+
+  describe('broadcast listener', function(){
+    beforeEach(function() {
+      compileWithToneAndTranspose('C', 'M3')
+    });
+    it('should listen for quality changes and re parse keys', function(){
+      scope.transposeKey = ':3';
+      $rootScope.$broadcast('qualityChanged');
+      scope.$apply();
+      expect(getNoteText(element)).toBe('Eb');
     });
   });
 });
