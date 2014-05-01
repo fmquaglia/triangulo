@@ -22,7 +22,15 @@ angular.module('trianguloApp')
       'B'
     ];
 
-    $scope.selectedTone = 'C';
+    $scope.qualities = [
+      'Major',
+      'Minor'
+    ];
+
+
+
+    $scope.selectedQuality = $scope.qualities[0];
+    $scope.selectedTone = $scope.tones[0];
 
 
   });

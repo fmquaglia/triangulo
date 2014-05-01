@@ -2,11 +2,12 @@
   <h1>Tri&aacute;ngulo</h1>
 </div>
 <div id="controls">
-  <select class="form-control" ng-model="selectedTone"
+  <select class="form-control"
+          ng-model="selectedTone"
           ng-options="tone for tone in tones"></select>
-  <span class="quality">
-    Major
-  </span>
+  <select class="form-control"
+          ng-model="selectedQuality"
+          ng-options="quality for quality in qualities"></select>
   <span class="checkbox hide_enharmonics">
     <label for="hide_enharmonics">
       <input id="hide_enharmonics" type="checkbox" ng-model="hideEnharmonics"/>
