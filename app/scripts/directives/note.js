@@ -4,7 +4,8 @@ angular.module('trianguloApp')
   .directive('note', function () {
     return {
       scope: {
-        key: '='
+        key: '=',
+        transpose: '&'
       },
       template: '<span class="note" ng-click="play()">' +
                   '<span class="note_text">' +
@@ -28,8 +29,8 @@ angular.module('trianguloApp')
         scope.$watch('key', parseKey);
 
         function parseKey() {
-          if (angular.isString(attrs.transpose) && attrs.transpose) {
-            fullNote = teoria.note.fromString(scope.key).transpose(attrs.transpose);
+          if (scope.transpose() && angular.isString(scope.transpose())) {
+            fullNote = teoria.note.fromString(scope.key).transpose(scope.transpose());
           } else {
             fullNote = teoria.note.fromString(scope.key);
           }
@@ -47,7 +48,9 @@ angular.module('trianguloApp')
           MIDI.setVolume(0, 127);
           MIDI.noteOn(0, midiNumber, velocity, delay);
           MIDI.noteOff(0, midiNumber, delay + 0.75);
-        }
+        };
+
+        scope.$on('qualityChanged', parseKey);
       }
     };
   });

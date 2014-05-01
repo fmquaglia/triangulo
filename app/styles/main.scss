@@ -41,19 +41,12 @@ h1, h2, h3 {
   margin-top: 3rem;
   margin-bottom: 3rem;
   text-align: center;
-  select {
-    @include make-sm-column(1);
-  }
-  .quality {
-    @include make-sm-column(1);
-    color: #FEF9E6;
-    line-height: 2;
-  }
   .hide_enharmonics {
     float: right;
     color: #FEF9E6;
   }
 }
+
 #triads {
   @include gradient-vertical(#fef9e6, #b0df7d);
   border: 2px solid #99c369;
@@ -92,6 +85,11 @@ h1, h2, h3 {
 }
 
 @media (min-width: $screen-xs-max) {
+  #tone_selector, #quality_selector {
+    @include make-sm-column(2);
+    padding-left: 0;
+  }
+
   .tone {
     @include make-sm-column(4);
     .note {
@@ -109,6 +107,11 @@ h1, h2, h3 {
 }
 
 @media (max-width: $screen-xs-min) {
+  #tone_selector, #quality_selector {
+    @include make-xs-column(6);
+    text-align: center;
+  }
+
   #header h1 {
     font-size: 2.4rem;
     padding-top: 0.5rem;
@@ -116,9 +119,6 @@ h1, h2, h3 {
   }
   #controls {
     margin: 1.5rem auto;
-    select, .quality {
-      @include make-xs-column(6);
-    }
     .hide_enharmonics {
       float: right;
       input, label {

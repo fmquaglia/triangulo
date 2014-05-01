@@ -2,11 +2,16 @@
   <h1>Tri&aacute;ngulo</h1>
 </div>
 <div id="controls">
-  <select class="form-control" ng-model="selectedTone"
-          ng-options="tone for tone in tones"></select>
-  <span class="quality">
-    Major
-  </span>
+  <div id="tone_selector">
+    <select class="form-control"
+            ng-model="selectedTone"
+            ng-options="tone for tone in tones"></select>
+  </div>
+  <div id="quality_selector">
+    <select class="form-control"
+            ng-model="selectedQuality"
+            ng-options="quality for quality in qualities"></select>
+  </div>
   <span class="checkbox hide_enharmonics">
     <label for="hide_enharmonics">
       <input id="hide_enharmonics" type="checkbox" ng-model="hideEnharmonics"/>
@@ -21,29 +26,29 @@
       <note key="selectedTone"></note>
     </li>
     <li class="tone">
-      <note key="selectedTone" transpose="M3"></note>
+      <note key="selectedTone" transpose="triads[selectedQuality][0][1]"></note>
     </li>
     <li class="tone">
-      <note key="selectedTone" transpose="P5"></note>
+      <note key="selectedTone" transpose="triads[selectedQuality][0][2]"></note>
     </li>
   </ul>
   <ul class="triad">
     <li class="tone">
-      <note key="selectedTone" transpose="M-3"></note>
+      <note key="selectedTone" transpose="triads[selectedQuality][1][0]"></note>
     </li>
     <li class="tone">
       <note key="selectedTone"></note>
     </li>
     <li class="tone">
-      <note key="selectedTone" transpose="m3"></note>
+      <note key="selectedTone" transpose="triads[selectedQuality][1][2]"></note>
     </li>
   </ul>
   <ul class="triad">
     <li class="tone">
-      <note key="selectedTone" transpose="P-5"></note>
+      <note key="selectedTone" transpose="triads[selectedQuality][2][0]"></note>
     </li>
     <li class="tone">
-      <note key="selectedTone" transpose="m-3"></note>
+      <note key="selectedTone" transpose="triads[selectedQuality][2][1]"></note>
     </li>
     <li class="tone">
       <note key="selectedTone"></note>
@@ -68,7 +73,7 @@
 
   <p>
     <a href="http://mudcu.be">Michael Deal</a> aka <a
-       href="https://github.com/mudcube">mudcube</a> for <a
+       href="https://github.com/mudcube">@mudcube</a> for <a
        href="https://github.com/mudcube/MIDI.js">MIDI.js</a>
   </p>
 </div>

@@ -7,9 +7,11 @@ describe('Directive: note', function () {
 
   var element,
       $compile,
+      $rootScope,
       scope;
 
-  beforeEach(inject(function ($rootScope, _$compile_) {
+  beforeEach(inject(function (_$compile_, _$rootScope_) {
+    $rootScope = _$rootScope_;
     $compile = _$compile_;
     scope = $rootScope.$new();
   }));
@@ -22,7 +24,8 @@ describe('Directive: note', function () {
   }
   function compileWithToneAndTranspose(tone, transpose) {
     scope.selectedTone = tone;
-    element = angular.element('<note key="selectedTone" transpose="' + transpose + '"></note>');
+    scope.transposeKey = transpose;
+    element = angular.element('<note key="selectedTone" transpose="transposeKey"></note>');
     element = $compile(element)(scope);
     scope.$digest();
   }
@@ -175,6 +178,17 @@ describe('Directive: note', function () {
   });
   // TODO: find out how to test
   xdescribe('play note', function(){
+    beforeEach(function() {
+      MIDI.setVolume = function(volume) {
+        return volume;
+      };
+      MIDI.delay = function(delay) {
+        return delay;
+      };
+      MIDI.velocity = function(velocity) {
+        return velocity;
+      };
+    });
     it('when clicked should play note through MIDI', function(){
       var spyMIDIVolume = spyOn(MIDI, 'setVolume');
       var spyMIDIDelay = spyOn(MIDI, 'delay');
@@ -184,6 +198,18 @@ describe('Directive: note', function () {
       expect(spyMIDIVolume).toHaveBeenCalled();
       expect(spyMIDIDelay).toHaveBeenCalled();
       expect(spyMIDIVelocity).toHaveBeenCalled();
+    });
+  });
+
+  describe('broadcast listener', function(){
+    beforeEach(function() {
+      compileWithToneAndTranspose('C', 'M3')
+    });
+    it('should listen for quality changes and re parse keys', function(){
+      scope.transposeKey = 'm3';
+      $rootScope.$broadcast('qualityChanged');
+      scope.$apply();
+      expect(getNoteText(element)).toBe('Eb');
     });
   });
 });

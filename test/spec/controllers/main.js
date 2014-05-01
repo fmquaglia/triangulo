@@ -24,4 +24,25 @@ describe('Controller: MainCtrl', function () {
   it('should init selectedTone as C', function(){
     expect(scope.selectedTone).toBe('C');
   });
+
+  it('should attach an array of qualities', function(){
+    expect(angular.isArray(scope.qualities)).toBe(true);
+    expect(scope.qualities.length).toBe(2);
+  });
+
+  it('should init selectedQuality as Major', function(){
+    expect(scope.selectedQuality).toBe('Major');
+  });
+
+  describe('Changing quality', function(){
+    beforeEach(function() {
+      scope.selectedQuality = scope.qualities[0];
+    });
+    it('should broadcast a message when the selectedQuality changes', function(){
+      var spyBroadcast = spyOn(scope, '$broadcast');
+      scope.selectedQuality = scope.qualities[1];
+      scope.$apply();
+      expect(spyBroadcast).toHaveBeenCalledWith('qualityChanged');
+    });
+  });
 });
