@@ -115,37 +115,27 @@ footer {
 ////////////////////////////////////////////////////////////////////////////////
 
 .interval {
-  @extend .row;
   &:nth-child(1),
   &:nth-child(16) {
-    @include make-sm-column(10);
-    @include make-sm-column-offset(1);
+    @include make-sm-column(12);
   }
   &:nth-child(2),
   &:nth-child(4),
   &:nth-child(12),
-  &:nth-child(14) {
-    @include make-sm-column(5.125);
-    @include make-sm-column-offset(1);
-  }
+  &:nth-child(14),
   &:nth-child(3),
   &:nth-child(5),
   &:nth-child(13),
   &:nth-child(15) {
-    @include make-sm-column(5.2);
+    @include make-sm-column(6);
   }
   &:nth-child(6),
-  &:nth-child(9) {
-    @include make-sm-column(3.5474);
-    @include make-sm-column-offset(1);
-  }
+  &:nth-child(9),
   &:nth-child(7),
-  &:nth-child(10) {
-    @include make-sm-column(3.5474);
-  }
+  &:nth-child(10),
   &:nth-child(8),
   &:nth-child(11) {
-    @include make-sm-column(3.5473);
+    @include make-sm-column(4);
   }
   text-align: center;
   .note {

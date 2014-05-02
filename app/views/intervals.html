@@ -13,6 +13,6 @@
 </div>
 <ul id="intervals" ng-class="{'enharmonics_hidden': hideEnharmonics}">
   <li class="interval" ng-repeat="transposition in transpositions">
-    <note key="selectedTone" transpose="transposition"></note>
+    <note key="selectedTone" transpose="transposition">{{transpositionNames[transposition]}}</note>
   </li>
 </ul>

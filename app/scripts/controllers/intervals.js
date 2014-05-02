@@ -23,4 +23,23 @@ angular.module('trianguloApp')
       'P8'
     ];
 
+    $scope.transpositionNames = {
+     'P1': 'unison',
+     'm2': 'minor second',
+     'M2': 'major second',
+     'm3': 'minor third',
+     'M3': 'major third',
+     'd4': 'diminished fourth',
+     'P4': 'perfect fourth',
+     'A4': 'augmented fourth',
+     'd5': 'diminished fifth',
+     'P5': 'perfect fifth',
+     'A5': 'augmented fifth',
+     'm6': 'minor sixth',
+     'M6': 'major sixth',
+     'm7': 'minor seventh',
+     'M7': 'major seventh',
+     'P8': 'octave'
+    };
+
   });

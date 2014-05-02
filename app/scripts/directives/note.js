@@ -8,6 +8,7 @@ angular.module('trianguloApp')
         transpose: '&'
       },
       template: '<span class="note" ng-click="play()">' +
+                  '<span class="title" ng-transclude></span>' +
                   '<span class="note_text">' +
                     '<span class="name">{{name}}</span>' +
                     '<sup class="accidental">{{accidental}}</sup>' +
@@ -17,6 +18,7 @@ angular.module('trianguloApp')
                   '</ul>' +
                 '</span>',
       restrict: 'E',
+      transclude: true,
       replace: true,
       link: function postLink(scope, element, attrs) {
         scope.key = angular.isDefined(scope.key) ? jQuery.trim(scope.key.toString()).toUpperCase() : 'A';
