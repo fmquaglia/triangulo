@@ -22,7 +22,7 @@ h1, h2, h3 {
   color: #ff8935;
 }
 
-#triads, #controls, #intro, #header {
+#triads, #controls, #intervals, #intro, #header {
   @extend .container;
 }
 
@@ -106,6 +106,71 @@ footer {
     .enharmonic {
       float: left;
       margin-right: 1rem;
+    }
+  }
+}
+
+////////////////////////////////////////////////////////////////////////////////
+//                                Intervals                                   //
+////////////////////////////////////////////////////////////////////////////////
+
+.interval {
+  @extend .row;
+  &:nth-child(1),
+  &:nth-child(16) {
+    @include make-sm-column(10);
+    @include make-sm-column-offset(1);
+  }
+  &:nth-child(2),
+  &:nth-child(4),
+  &:nth-child(12),
+  &:nth-child(14) {
+    @include make-sm-column(5.125);
+    @include make-sm-column-offset(1);
+  }
+  &:nth-child(3),
+  &:nth-child(5),
+  &:nth-child(13),
+  &:nth-child(15) {
+    @include make-sm-column(5.2);
+  }
+  &:nth-child(6),
+  &:nth-child(9) {
+    @include make-sm-column(3.5474);
+    @include make-sm-column-offset(1);
+  }
+  &:nth-child(7),
+  &:nth-child(10) {
+    @include make-sm-column(3.5474);
+  }
+  &:nth-child(8),
+  &:nth-child(11) {
+    @include make-sm-column(3.5473);
+  }
+  text-align: center;
+  .note {
+    @include make-sm-column(12);
+    border-radius: 0.5rem;
+    @include gradient-vertical(#fef9e6, #b0df7d);
+    border: 0.2rem solid #144860;
+    color: #144860;
+    .note_text {
+      font-size: 2.4rem;
+    }
+    .enharmonics {
+      @include make-sm-column(12);
+      font-size: 1.2rem;
+      color: #FF8935;
+      font-style: italic;
+      .enharmonic {
+        @include make-sm-column(6);
+        &:first-child {
+          text-align: right;
+        }
+        &:last-child {
+          text-align: left;
+        }
+      }
     }
   }
 }
