@@ -3,6 +3,10 @@ $icon-font-path: "/bower_components/bootstrap-sass-official/vendor/assets/fonts/
 
 @import 'bootstrap-sass-official/vendor/assets/stylesheets/bootstrap';
 
+////////////////////////////////////////////////////////////////////////////////
+//                                  General                                   //
+////////////////////////////////////////////////////////////////////////////////
+
 body {
   background: #144860;
 }
@@ -18,18 +22,8 @@ h1, h2, h3 {
   color: #ff8935;
 }
 
-.note {
-  .name {
-    text-transform: uppercase;
-  }
-}
-
 #triads, #controls, #intro, #header {
   @extend .container;
-}
-.triad {
-  @extend .row;
-  margin-bottom: 0;
 }
 
 #header {
@@ -44,6 +38,38 @@ h1, h2, h3 {
   .hide_enharmonics {
     float: right;
     color: #FEF9E6;
+  }
+}
+
+.enharmonics_hidden .enharmonics {
+  visibility: hidden;
+}
+
+#intro {
+  margin-top: 3rem;
+  color: #FEF9E6;
+}
+
+footer {
+  margin-top: 3rem;
+  color: #FEF9E6;
+  text-align: right;
+  font-size: 1.1rem;
+}
+
+////////////////////////////////////////////////////////////////////////////////
+//                                   Triads                                   //
+////////////////////////////////////////////////////////////////////////////////
+
+
+.triad {
+  @extend .row;
+  margin-bottom: 0;
+}
+
+.note {
+  .name {
+    text-transform: uppercase;
   }
 }
 
@@ -84,12 +110,15 @@ h1, h2, h3 {
   }
 }
 
+////////////////////////////////////////////////////////////////////////////////
+//                               Responsive                                   //
+////////////////////////////////////////////////////////////////////////////////
+
 @media (min-width: $screen-xs-max) {
   #tone_selector, #quality_selector {
     @include make-sm-column(2);
     padding-left: 0;
   }
-
   .tone {
     @include make-sm-column(4);
     .note {
@@ -146,20 +175,4 @@ h1, h2, h3 {
       }
     }
   }
-}
-
-.enharmonics_hidden .enharmonics {
-  visibility: hidden;
-}
-
-#intro {
-  margin-top: 3rem;
-  color: #FEF9E6;
-}
-
-footer {
-  margin-top: 3rem;
-  color: #FEF9E6;
-  text-align: right;
-  font-size: 1.1rem;
 }
