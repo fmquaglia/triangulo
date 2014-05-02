@@ -26,4 +26,9 @@ describe('Controller: IntervalsCtrl', function () {
   it('should init selectedTone as the first tone in Tones', function(){
     expect(scope.selectedTone).toBe(Tones[0]);
   });
+
+  it('should attach to the scope a list of transpositions', function(){
+    expect(angular.isArray(scope.transpositions)).toBe(true);
+    expect(scope.transpositions.length).toBe(16);
+  });
 });
