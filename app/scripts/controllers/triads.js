@@ -1,27 +1,9 @@
 'use strict';
 
 angular.module('trianguloApp')
-  .controller('TriadsCtrl', function ($scope) {
+  .controller('TriadsCtrl', function ($scope, Tones) {
 
-    $scope.tones = [
-      'C',
-      'C#',
-      'Db',
-      'D',
-      'D#',
-      'Eb',
-      'E',
-      'F',
-      'F#',
-      'Gb',
-      'G',
-      'G#',
-      'Ab',
-      'A',
-      'A#',
-      'Bb',
-      'B'
-    ];
+    $scope.tones = Tones;
 
     $scope.qualities = [
       'Major',
