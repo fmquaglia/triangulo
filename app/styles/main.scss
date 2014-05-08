@@ -3,6 +3,10 @@ $icon-font-path: "/bower_components/bootstrap-sass-official/vendor/assets/fonts/
 
 @import 'bootstrap-sass-official/vendor/assets/stylesheets/bootstrap';
 
+////////////////////////////////////////////////////////////////////////////////
+//                                  General                                   //
+////////////////////////////////////////////////////////////////////////////////
+
 body {
   background: #144860;
 }
@@ -18,18 +22,8 @@ h1, h2, h3 {
   color: #ff8935;
 }
 
-.note {
-  .name {
-    text-transform: uppercase;
-  }
-}
-
-#triads, #controls, #intro, #header {
+#triads, #controls, #intervals, #intro, #header {
   @extend .container;
-}
-.triad {
-  @extend .row;
-  margin-bottom: 0;
 }
 
 #header {
@@ -44,6 +38,38 @@ h1, h2, h3 {
   .hide_enharmonics {
     float: right;
     color: #FEF9E6;
+  }
+}
+
+.enharmonics_hidden .enharmonics {
+  visibility: hidden;
+}
+
+#intro {
+  margin-top: 3rem;
+  color: #FEF9E6;
+}
+
+footer {
+  margin-top: 3rem;
+  color: #FEF9E6;
+  text-align: right;
+  font-size: 1.1rem;
+}
+
+////////////////////////////////////////////////////////////////////////////////
+//                                   Triads                                   //
+////////////////////////////////////////////////////////////////////////////////
+
+
+.triad {
+  @extend .row;
+  margin-bottom: 0;
+}
+
+.note {
+  .name {
+    text-transform: uppercase;
   }
 }
 
@@ -84,12 +110,83 @@ h1, h2, h3 {
   }
 }
 
+////////////////////////////////////////////////////////////////////////////////
+//                                Intervals                                   //
+////////////////////////////////////////////////////////////////////////////////
+
+.interval {
+  &:nth-child(1),
+  &:nth-child(16) {
+    @include make-sm-column(12);
+  }
+  &:nth-child(2),
+  &:nth-child(4),
+  &:nth-child(12),
+  &:nth-child(14),
+  &:nth-child(3),
+  &:nth-child(5),
+  &:nth-child(13),
+  &:nth-child(15) {
+    @include make-sm-column(6);
+  }
+  &:nth-child(6),
+  &:nth-child(9),
+  &:nth-child(7),
+  &:nth-child(10),
+  &:nth-child(8),
+  &:nth-child(11) {
+    @include make-sm-column(4);
+  }
+  &:first-child .note {
+    @include border-top-radius(0.5rem);
+  }
+  &:last-child .note {
+    @include border-bottom-radius(0.5rem);
+  }
+  text-align: center;
+  padding-left: 0 !important;
+  padding-right: 0 !important;
+  .note {
+    @include make-sm-column(12);
+    @include gradient-vertical(#fef9e6, #b0df7d);
+    border: solid #99c369;
+    border-width: 0 1px 1px 0;
+    color: #144860;
+    cursor: pointer;
+    &:hover {
+      background: radial-gradient(#fef9e6, #b0df7d) ;
+    }
+    .title {
+      font-size: 1.8rem;
+      color: #1d6e78;
+      font-style: italic;
+    }
+    .note_text {
+      font-size: 2.4rem;
+    }
+    .enharmonics {
+      @include make-sm-column(12);
+      font-size: 1.2rem;
+      color: #FF8935;
+      font-style: italic;
+      min-height: 1.7rem;
+      .enharmonic {
+        display: inline-block;
+        padding-right: 1rem;
+      }
+    }
+  }
+}
+
+////////////////////////////////////////////////////////////////////////////////
+//                               Responsive                                   //
+////////////////////////////////////////////////////////////////////////////////
+
 @media (min-width: $screen-xs-max) {
   #tone_selector, #quality_selector {
     @include make-sm-column(2);
     padding-left: 0;
   }
-
   .tone {
     @include make-sm-column(4);
     .note {
@@ -146,20 +243,4 @@ h1, h2, h3 {
       }
     }
   }
-}
-
-.enharmonics_hidden .enharmonics {
-  visibility: hidden;
-}
-
-#intro {
-  margin-top: 3rem;
-  color: #FEF9E6;
-}
-
-footer {
-  margin-top: 3rem;
-  color: #FEF9E6;
-  text-align: right;
-  font-size: 1.1rem;
 }

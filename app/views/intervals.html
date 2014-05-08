@@ -1,0 +1,21 @@
+<div ng-include="'/views/partials/header.html'"></div>
+<div id="controls">
+  <div id="tone_selector">
+    <select class="form-control"
+            ng-model="selectedTone"
+            ng-options="tone for tone in tones"></select>
+  </div>
+  <span class="checkbox hide_enharmonics">
+    <label for="hide_enharmonics">
+      <input id="hide_enharmonics" type="checkbox" ng-model="hideEnharmonics"/>
+      Hide Enharmonics
+    </label>
+  </span>
+</div>
+<ul id="intervals" ng-class="{'enharmonics_hidden': hideEnharmonics}">
+  <li class="interval" ng-repeat="transposition in transpositions">
+    <note key="selectedTone" transpose="transposition" play-interval>
+      {{transpositionNames[transposition]}}
+    </note>
+  </li>
+</ul>

@@ -13,6 +13,10 @@ angular
         templateUrl: 'views/triads.html',
         controller: 'TriadsCtrl'
       })
+      .when('/intervals', {
+        templateUrl: 'views/intervals.html',
+        controller: 'IntervalsCtrl'
+      })
       .otherwise({
         redirectTo: '/triads'
       });

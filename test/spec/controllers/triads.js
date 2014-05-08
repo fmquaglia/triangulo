@@ -6,23 +6,29 @@ describe('Controller: TriadsCtrl', function () {
   beforeEach(module('trianguloApp'));
 
   var MainCtrl,
-    scope;
+      scope,
+      Tones;
 
   // Initialize the controller and a mock scope
-  beforeEach(inject(function ($controller, $rootScope) {
+  beforeEach(inject(function ($controller, $rootScope, _Tones_) {
     scope = $rootScope.$new();
+    Tones = _Tones_;
     MainCtrl = $controller('TriadsCtrl', {
       $scope: scope
     });
   }));
 
-  it('should attach a list of tones to the scope', function () {
-    expect(angular.isArray(scope.tones)).toBe(true);
-    expect(scope.tones.length).toBe(17);
+  it('should make triads the active page', function(){
+    expect(scope.triadsActive).toBe(true);
+    expect(scope.intervalsActive).toBeUndefined();
   });
 
-  it('should init selectedTone as C', function(){
-    expect(scope.selectedTone).toBe('C');
+  it('should attach Tones to the scope', function () {
+    expect(scope.tones).toEqual(Tones)
+  });
+
+  it('should init selectedTone as the first tone in Tones', function(){
+    expect(scope.selectedTone).toBe(Tones[0]);
   });
 
   it('should attach an array of qualities', function(){
