@@ -137,13 +137,30 @@ footer {
   &:nth-child(11) {
     @include make-sm-column(4);
   }
+  &:first-child .note {
+    @include border-top-radius(0.5rem);
+  }
+  &:last-child .note {
+    @include border-bottom-radius(0.5rem);
+  }
   text-align: center;
+  padding-left: 0 !important;
+  padding-right: 0 !important;
   .note {
     @include make-sm-column(12);
-    border-radius: 0.5rem;
     @include gradient-vertical(#fef9e6, #b0df7d);
-    border: 0.2rem solid #144860;
+    border: solid #99c369;
+    border-width: 0 1px 1px 0;
     color: #144860;
+    cursor: pointer;
+    &:hover {
+      background: radial-gradient(#fef9e6, #b0df7d) ;
+    }
+    .title {
+      font-size: 1.8rem;
+      color: #1d6e78;
+      font-style: italic;
+    }
     .note_text {
       font-size: 2.4rem;
     }
@@ -152,14 +169,10 @@ footer {
       font-size: 1.2rem;
       color: #FF8935;
       font-style: italic;
+      min-height: 1.7rem;
       .enharmonic {
-        @include make-sm-column(6);
-        &:first-child {
-          text-align: right;
-        }
-        &:last-child {
-          text-align: left;
-        }
+        display: inline-block;
+        padding-right: 1rem;
       }
     }
   }
