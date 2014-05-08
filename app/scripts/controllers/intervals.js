@@ -2,6 +2,7 @@
 
 angular.module('trianguloApp')
   .controller('IntervalsCtrl', function ($scope, Tones) {
+    $scope.intervalsActive = true;
     $scope.tones = Tones;
     $scope.selectedTone = $scope.tones[0];
     $scope.transpositions = [

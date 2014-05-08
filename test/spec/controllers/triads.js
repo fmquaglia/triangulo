@@ -18,6 +18,11 @@ describe('Controller: TriadsCtrl', function () {
     });
   }));
 
+  it('should make triads the active page', function(){
+    expect(scope.triadsActive).toBe(true);
+    expect(scope.intervalsActive).toBeUndefined();
+  });
+
   it('should attach Tones to the scope', function () {
     expect(scope.tones).toEqual(Tones)
   });

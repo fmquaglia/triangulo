@@ -2,7 +2,7 @@
 
 angular.module('trianguloApp')
   .controller('TriadsCtrl', function ($scope, Tones) {
-
+    $scope.triadsActive = true;
     $scope.tones = Tones;
 
     $scope.qualities = [

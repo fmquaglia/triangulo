@@ -19,6 +19,11 @@ describe('Controller: IntervalsCtrl', function () {
     });
   }));
 
+  it('should make intervals the active page', function(){
+    expect(scope.intervalsActive).toBe(true);
+    expect(scope.triadsActive).toBeUndefined();
+  });
+
   it('should attach Tones to the scope', function () {
     expect(scope.tones).toEqual(Tones)
   });
