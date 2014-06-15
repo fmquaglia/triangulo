@@ -182,7 +182,7 @@ footer {
 //                               Responsive                                   //
 ////////////////////////////////////////////////////////////////////////////////
 
-@media (min-width: $screen-xs-max) {
+@media (min-width: $screen-xs-min) {
   #tone_selector, #quality_selector {
     @include make-sm-column(2);
     padding-left: 0;
@@ -203,10 +203,7 @@ footer {
   }
 }
 
-@media (max-width: $screen-xs-min) {
-  #gh_ribbon {
-    display: none;
-  }
+@media (max-width: $screen-xs-max) {
   #tone_selector, #quality_selector {
     @include make-xs-column(6);
     text-align: center;
