@@ -204,6 +204,9 @@ footer {
 }
 
 @media (max-width: $screen-xs-min) {
+  #gh_ribbon {
+    display: none;
+  }
   #tone_selector, #quality_selector {
     @include make-xs-column(6);
     text-align: center;
@@ -240,6 +243,39 @@ footer {
         .enharmonic {
           margin-right: 0.5rem;
         }
+      }
+    }
+  }
+  .interval {
+    @include gradient-vertical(#fef9e6, #b0df7d);
+    border: solid #99c369;
+    border-width: 1px 1px 0;
+    cursor: pointer;
+    &:first-child {
+      border-radius: 1rem 1rem 0 0;
+    }
+    &:last-child {
+      border-bottom: 1px solid;
+      border-radius: 0  0 1rem 1rem;
+    }
+    .note {
+      background: none;
+      display: inline;
+      border: none;
+      border-radius: 0;
+      &:hover {
+        background: none;
+      }
+      .title {
+        @include make-xs-column(9);
+        text-align: left;
+      }
+      .note_text {
+        @include make-xs-column(3);
+        text-align: left;
+      }
+      .enharmonics {
+        text-align: right;
       }
     }
   }
