@@ -50,6 +50,19 @@ h1, h2, h3 {
 #header {
   color: #FEF9E6;
   text-align: center;
+  .nav {
+    a {
+      color: #99c369;
+      background: #144860;
+      &:hover {
+        background: #2e4751;
+      }
+    }
+    .active a {
+      background: #ff8935;
+      color: #FFFFFF;
+    }
+  }
 }
 
 #controls {
