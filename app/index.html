@@ -28,8 +28,10 @@
 
     <!-- Add your site or application content here -->
     <div class="container">
-      <div ng-view="" ng-class="page"></div>
-      <div ng-include="'/views/partials/footer.html'"></div>
+      <div ng-include="'./views/partials/header.html'"></div>
+      <div ng-view="" id="page"></div>
+      <div ng-include="'./views/partials/preloader.html'"></div>
+      <div ng-include="'./views/partials/footer.html'"></div>
     </div>
 
     <!--[if lt IE 9]>
@@ -68,7 +70,10 @@
       window.onload = function () {
         MIDI.loadPlugin({
           soundfontUrl: "./soundfont/",
-          instrument: "acoustic_grand_piano"
+          instrument: "acoustic_grand_piano",
+          callback: function() {
+            angular.element('body').addClass('loaded');
+          }
         });
       };
     </script>
