@@ -1,0 +1,4 @@
+@mixin gradient($start-color, $end-color, $type: gradient-vertical) {
+  background: $start-color;
+  $type($start-color, $end-color);
+}
