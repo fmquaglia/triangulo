@@ -1,4 +1,8 @@
 @mixin gradient($start-color, $end-color, $type: gradient-vertical) {
   background: $start-color;
-  $type($start-color, $end-color);
+  @if($type == gradient-vertical) {
+    @include gradient-vertical($start-color, $end-color);
+  } @else {
+    @include gradient-radial($start-color, $end-color);
+  }
 }
