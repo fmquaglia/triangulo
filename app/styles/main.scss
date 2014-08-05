@@ -7,6 +7,12 @@ $icon-font-path: "/bower_components/bootstrap-sass-official/vendor/assets/fonts/
 //                                  General                                   //
 ////////////////////////////////////////////////////////////////////////////////
 
+@import "fontello";
+
+////////////////////////////////////////////////////////////////////////////////
+//                                  General                                   //
+////////////////////////////////////////////////////////////////////////////////
+
 body {
   background: #144860;
 }
@@ -104,6 +110,9 @@ footer {
 .note {
   .name {
     text-transform: uppercase;
+  }
+  .note_symbols span {
+    margin-right: -1em;
   }
 }
 
