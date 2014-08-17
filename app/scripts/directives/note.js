@@ -1,7 +1,7 @@
 'use strict';
 
 angular.module('trianguloApp')
-  .directive('note', function ($timeout) {
+  .directive('note', function ($timeout, Teoria) {
     return {
       scope: {
         key: '=',
@@ -44,9 +44,9 @@ angular.module('trianguloApp')
         scope.$watch('key', parseKey);
 
         function parseKey() {
-          unTransposedNote = teoria.note.fromString(scope.key);
+          unTransposedNote = Teoria.note.fromString(scope.key);
           if (scope.transpose() && angular.isString(scope.transpose())) {
-            transposedNote = teoria.note.fromString(scope.key).transpose(scope.transpose());
+            transposedNote = Teoria.note.fromString(scope.key).transpose(scope.transpose());
           } else {
             transposedNote = unTransposedNote;
           }
