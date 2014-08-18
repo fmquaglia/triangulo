@@ -1,14 +1,11 @@
 'use strict';
 
 angular.module('trianguloApp')
-  .controller('TriadsCtrl', function ($scope, Tones) {
+  .controller('TriadsCtrl', function ($scope, Tones, Qualities) {
+
     $scope.triadsActive = true;
     $scope.tones = Tones;
-
-    $scope.qualities = [
-      'Major',
-      'Minor'
-    ];
+    $scope.Qualities = Qualities;
 
     $scope.triads = {
       'Major': [
@@ -23,7 +20,7 @@ angular.module('trianguloApp')
       ]
     };
 
-    $scope.selectedQuality = $scope.qualities[0];
+    $scope.selectedQuality = $scope.Qualities[0];
     $scope.selectedTone = $scope.tones[0];
 
     $scope.$watch('selectedQuality', function() {

@@ -7,14 +7,18 @@ describe('Controller: TriadsCtrl', function () {
 
   var MainCtrl,
       scope,
-      Tones;
+      Tones,
+      Qualities;
 
   // Initialize the controller and a mock scope
-  beforeEach(inject(function ($controller, $rootScope, _Tones_) {
+  beforeEach(inject(function ($controller, $rootScope, _Tones_, _Qualities_) {
     scope = $rootScope.$new();
     Tones = _Tones_;
+    Qualities = _Qualities_;
     MainCtrl = $controller('TriadsCtrl', {
-      $scope: scope
+      $scope: scope,
+      Tones: Tones,
+      Qualities: Qualities
     });
   }));
 
@@ -31,9 +35,8 @@ describe('Controller: TriadsCtrl', function () {
     expect(scope.selectedTone).toBe(Tones[0]);
   });
 
-  it('should attach an array of qualities', function(){
-    expect(angular.isArray(scope.qualities)).toBe(true);
-    expect(scope.qualities.length).toBe(2);
+  it('should attach to the scope the Qualities constant', function(){
+    expect(scope.Qualities).toEqual(Qualities);
   });
 
   it('should init selectedQuality as Major', function(){
@@ -42,11 +45,11 @@ describe('Controller: TriadsCtrl', function () {
 
   describe('Changing quality', function(){
     beforeEach(function() {
-      scope.selectedQuality = scope.qualities[0];
+      scope.selectedQuality = scope.Qualities[0];
     });
     it('should broadcast a message when the selectedQuality changes', function(){
       var spyBroadcast = spyOn(scope, '$broadcast');
-      scope.selectedQuality = scope.qualities[1];
+      scope.selectedQuality = scope.Qualities[1];
       scope.$apply();
       expect(spyBroadcast).toHaveBeenCalledWith('qualityChanged');
     });
