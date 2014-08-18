@@ -8,17 +8,20 @@ describe('Controller: TriadsCtrl', function () {
   var MainCtrl,
       scope,
       Tones,
+      Triads,
       Qualities;
 
   // Initialize the controller and a mock scope
-  beforeEach(inject(function ($controller, $rootScope, _Tones_, _Qualities_) {
+  beforeEach(inject(function ($controller, $rootScope, _Tones_, _Qualities_, _Triads_) {
     scope = $rootScope.$new();
     Tones = _Tones_;
+    Triads = _Triads_;
     Qualities = _Qualities_;
     MainCtrl = $controller('TriadsCtrl', {
       $scope: scope,
       Tones: Tones,
-      Qualities: Qualities
+      Qualities: Qualities,
+      Triads: Triads
     });
   }));
 
@@ -53,5 +56,9 @@ describe('Controller: TriadsCtrl', function () {
       scope.$apply();
       expect(spyBroadcast).toHaveBeenCalledWith('qualityChanged');
     });
+  });
+
+  it('should attach to the scope the Triads object', function(){
+    expect(scope.Triads).toEqual(Triads);
   });
 });
