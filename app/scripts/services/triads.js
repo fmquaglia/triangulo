@@ -5,7 +5,7 @@ angular.module('trianguloApp')
     'Triads',
     function Triads() {
       var self = this;
-      self.byQuality = {
+      self.transposedTriadsByQuality = {
         'Major': [
           ['T', 'M3', 'P5'],
           ['M-3', 'T', 'm3'],

@@ -20,11 +20,11 @@ describe('Service: triads', function () {
   });
   
   it('should contain an object by Quality', function(){
-    expect(angular.isObject(Triads.byQuality)).toBe(true);
+    expect(angular.isObject(Triads.transposedTriadsByQuality)).toBe(true);
   });
 
   it('each attribute of by Quality return an array of arrays', function(){
-    _.values(Triads.byQuality, function(value) {
+    _.values(Triads.transposedTriadsByQuality, function(value) {
       expect(angular.isArray(value)).toBe(true);
       angular.each(value, function(triad) {
         expect(angular.isArray(triad)).toBe(true);
