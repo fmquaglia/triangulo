@@ -13,11 +13,7 @@ angular.module('trianguloApp')
                     '<span class="name">{{name}}</span>' +
                     '<sup class="accidental">{{accidental}}</sup>' +
                   '</span>' +
-                  '<span class="note_symbols">' +
-                    '<span class="music-G-clef"></span>' +
-                    '<span ng-show="symbolAccidental" ng-class="symbolAccidental"></span>' +
-                    '<span ng-class="symbolName"></span>' +
-                  '</span>' +
+                  '<notation name="name" accidental="accidental">' +
                   '<ul class="enharmonics">' +
                     '<li class="enharmonic" ng-repeat="enharmonic in enharmonics">{{enharmonic}}</li>' +
                   '</ul>' +
@@ -52,19 +48,6 @@ angular.module('trianguloApp')
           }
           scope.name = transposedNote.name().toUpperCase();
           scope.accidental = transposedNote.accidental().toLowerCase();
-          var octave = '';
-          if (scope.name === 'F' || scope.name === 'E' || scope.name === 'D' || scope.name === 'C' || scope.name === 'B'  || scope.name === 'A') {
-            octave = '-low';
-          }
-          scope.symbolName = 'music-whole-' + scope.name + octave;
-          var accidentalName='';
-          if (scope.accidental === 'b') {
-            accidentalName = 'flat';
-          }
-          if (scope.accidental === '#') {
-            accidentalName = 'sharp'
-          }
-          scope.symbolAccidental = scope.accidental ?  'music-'+ accidentalName + '-' + scope.name + octave : false;
           scope.enharmonics = _.map(transposedNote.enharmonics(), function(enharmonic) {
             return enharmonic.name().toUpperCase() + enharmonic.accidental().toLowerCase();
           });
