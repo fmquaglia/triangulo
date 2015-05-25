@@ -1,6 +1,6 @@
 'use strict';
 
-describe('Directive: notation', function () {
+xdescribe('Directive: notation', function () {
 
   // load the directive's module
   beforeEach(module('trianguloApp'));

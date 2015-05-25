@@ -1,7 +1,7 @@
 'use strict';
 
 angular.module('trianguloApp')
-  .directive('note', function ($timeout, Teoria) {
+  .directive('note', function ($timeout, $filter, Teoria) {
     return {
       scope: {
         key: '=',
@@ -12,8 +12,7 @@ angular.module('trianguloApp')
                   '<span class="note_text">' +
                     '<span class="name">{{name}}</span>' +
                     '<sup class="accidental">{{accidental}}</sup>' +
-                  '</span>' +
-                  '<notation name="name" accidental="accidental">' +
+                    '</span>' +
                   '<ul class="enharmonics">' +
                     '<li class="enharmonic" ng-repeat="enharmonic in enharmonics">{{enharmonic}}</li>' +
                   '</ul>' +
@@ -55,7 +54,7 @@ angular.module('trianguloApp')
 
         function playMIDI(note) {
           note = note || transposedNote;
-          var midiNumber = note.key() + 32;
+          var midiNumber = $filter('midiNumber')(note.key());
           var delay = 0;
           var velocity = 127;
           MIDI.setVolume(0, 127);
