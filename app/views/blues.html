@@ -4,5 +4,18 @@
             ng-model="selectedTone"
             ng-options="tone for tone in tones"></select>
   </div>
+  <span class="checkbox hide_enharmonics">
+    <label for="hide_enharmonics">
+      <input id="hide_enharmonics" type="checkbox" ng-model="hideEnharmonics"/>
+      Hide Enharmonics
+    </label>
+  </span>
 </div>
+
+<ul id="blues_notes" ng-class="{'enharmonics_hidden': hideEnharmonics}">
+  <li class="blues_note" ng-repeat="transposition in transpositions">
+    <note key="selectedTone" transpose="transposition" play-interval>
+    </note>
+  </li>
+</ul>
 
