@@ -26,19 +26,7 @@ angular.module('trianguloApp')
         if (scope.key.search(/^[A-G]\#?b?$/i) < 0) {
           scope.key = 'A';
         }
-        parseKey();
-
-        var playInterval = false;
-        if (angular.isDefined(attrs.playInterval)) {
-          playInterval = parseInt(attrs.playInterval);
-          if (isNaN(playInterval)) {
-            playInterval = 1000;
-          }
-        }
-
-        scope.$watch('key', parseKey);
-
-        function parseKey() {
+        var parseKey = function() {
           unTransposedNote = Teoria.note.fromString(scope.key);
           if (scope.transpose() && angular.isString(scope.transpose())) {
             transposedNote = Teoria.note.fromString(scope.key).transpose(scope.transpose());
@@ -50,9 +38,9 @@ angular.module('trianguloApp')
           scope.enharmonics = _.map(transposedNote.enharmonics(), function(enharmonic) {
             return enharmonic.name().toUpperCase() + enharmonic.accidental().toLowerCase();
           });
-        }
+        };
 
-        function playMIDI(note) {
+        var playMIDI = function(note) {
           note = note || transposedNote;
           var midiNumber = $filter('midiNumber')(note.key());
           var delay = 0;
@@ -60,7 +48,19 @@ angular.module('trianguloApp')
           MIDI.setVolume(0, 127);
           MIDI.noteOn(0, midiNumber, velocity, delay);
           MIDI.noteOff(0, midiNumber, delay + 0.75);
+        };
+
+        parseKey();
+
+        var playInterval = false;
+        if (angular.isDefined(attrs.playInterval)) {
+          playInterval = parseInt(attrs.playInterval);
+          if (isNaN(playInterval)) {
+            playInterval = 1000;
+          }
         }
+
+        scope.$watch('key', parseKey);
 
         scope.play = function() {
           if (angular.isNumber(playInterval)) {

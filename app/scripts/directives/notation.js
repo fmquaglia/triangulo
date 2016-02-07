@@ -13,8 +13,7 @@ angular.module('trianguloApp')
       restrict: 'E',
       replace: true,
       scope: {
-        'accidental': '=',
-        'name':       '='
+        'midiNumber': '='
       },
       controller: function($scope) {
         //function parseKey(){
