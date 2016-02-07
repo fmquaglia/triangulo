@@ -36,6 +36,7 @@ angular.module('trianguloApp')
           scope.name        = transposedNote.name().toUpperCase();
           scope.accidental  = transposedNote.accidental().toLowerCase();
           scope.midiNumber  = getMidiNumber(transposedNote);
+          console.log(transposedNote);
           scope.enharmonics = _.map(transposedNote.enharmonics(), function(enharmonic) {
             return enharmonic.name().toUpperCase() + enharmonic.accidental().toLowerCase();
           });

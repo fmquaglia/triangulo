@@ -11,12 +11,12 @@ describe('Filter: midiNumber', function () {
     midiNumber = $filter('midiNumber');
   }));
 
-  it('should return the input number plus 32"', function () {
-    expect(midiNumber(100)).toBe(132);
+  it('should return the input number plus 20"', function () {
+    expect(midiNumber(100)).toBe(120);
   });
 
   it('should parse to integer', function () {
-    expect(midiNumber('11')).toBe(43);
+    expect(midiNumber('11')).toBe(31);
   });
 
   it('should throw if cant parse to integer', function () {

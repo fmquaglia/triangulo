@@ -7,6 +7,6 @@ angular.module('trianguloApp')
       if (isNaN(key)) {
         throw Error('midiNumber input must be parseable to a valid integer')
       }
-      return key + 32;
+      return key + 20;
     };
   });
