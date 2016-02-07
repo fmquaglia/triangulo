@@ -18,6 +18,16 @@ angular
         templateUrl: 'views/intervals.html',
         controller: 'IntervalsCtrl'
       })
+      .when('/major_blues', {
+        templateUrl: 'views/blues.html',
+        controller: 'BluesCtrl',
+        quality: 'major'
+      })
+      .when('/minor_blues', {
+        templateUrl: 'views/blues.html',
+        controller: 'BluesCtrl',
+        quality: 'minor'
+      })
       .otherwise({
         redirectTo: '/triads'
       });
